@@ -11,7 +11,7 @@
             </KFormItem>
             <!-- 登录按钮 -->
              <KFormItem>
-                 <button @click="login">登录</button>
+                 <button @click="login">登录hush</button>
             </KFormItem>
         </KForm>
     </div>
