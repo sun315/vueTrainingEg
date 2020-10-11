@@ -13,7 +13,7 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
 // 事件总线
-// Vue.protype.$bus = new Vue();
+Vue.prototype.$bus = new Vue();
 Vue.prototype.$create = create;
 
 new Vue({

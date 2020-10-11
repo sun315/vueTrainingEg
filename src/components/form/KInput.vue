@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="k-input">
         <!-- 自定义组件双向绑定： :value  @input  -->
         <!-- v-bind="$attrs" 展开$attrs -->
         <input type="text" :value="value" @input="onInput" v-bind="$attrs" />
@@ -7,8 +7,10 @@
 </template>
 
 <script>
+    import emitter from "@/mixins/emitter";
     export default {
         inheritAttrs:false,// 设置为false避免设置到根元素上
+        mixins:[emitter],
         props:{
             value:{
                 type:String,
@@ -25,12 +27,15 @@
                 this.$emit('input',e.target.value);
 
                 // 通知父级执行校验
-                this.$parent.$emit('validate');
+                // this.$parent.$emit('validate');
+                
+                // 和parent解耦
+                this.dispatch("KFormItem","validate")
             }
         },
     }
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="k-form-item"> 
         <!-- label -->
         <label v-if="label">{{label}}</label>
 
@@ -17,7 +17,11 @@
 <script>
     // element-ui校验使用的第三方库
     import Schema from 'async-validator';
+    import emitter from "@/mixins/emitter";
     export default {
+        name:"KFormItem",
+        componentName:"KFormItem",
+        mixins:[emitter],
         inject:['form'],
         props: {
             label: {
@@ -37,6 +41,11 @@
             this.$on('validate',() => {
                 this.validate();
             })
+
+            // 派发事件，通知KForm，新增一个KFormItem实例
+            if(this.prop){
+                this.dispatch('KForm','sunlau.form.addField',[this])
+            }
         },
         methods:{
             validate(){
@@ -63,8 +72,11 @@
     }
 </script>
 
-<style>
-    .errorMsg{
-        color:red;
+<style lang="less" scoped>
+    .k-form-item{
+        margin-bottom:10px;
+        .errorMsg{
+            color:red;
+        }
     }
 </style>

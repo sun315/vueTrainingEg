@@ -10,8 +10,12 @@
                 <kInput type="password" v-model="userInfo.password" placeholder="请输入密码"></kInput>
             </KFormItem>
             <!-- 登录按钮 -->
-             <KFormItem>
+            <KFormItem>
                  <button @click="login">登录</button>
+            </KFormItem>
+            <!-- 注册按钮 -->
+            <KFormItem>
+                 <button @click="register">注册</button>
             </KFormItem>
         </KForm>
     </div>
@@ -57,11 +61,21 @@
                     //   return false;
                     // }
                 });
+            },
+            register(){
+                this.$refs["loginForm"].validate(valid => {
+                    if (valid) {
+                      alert("register");
+                    } else {
+                      console.log("error register!");
+                      return false;
+                    }
+                })
             }
         }
     }
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>
