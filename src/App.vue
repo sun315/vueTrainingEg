@@ -11,20 +11,20 @@
              @open="handleOpen"
              @close="handleClose">
             <el-menu-item index="/one" @click="goToOne">
-              <i class="el-icon-location"></i>
-              <span slot="title">vue-pdf-demo</span>
+              <i class="el-icon-reading"></i>
+              <span slot="title">js经典</span>
             </el-menu-item>
             <el-menu-item index="/two" @click="goToTwo">
-              <i class="el-icon-menu"></i>
-              <span slot="title">demo2</span>
+              <i class="el-icon-monitor"></i>
+              <span slot="title">算法</span>
             </el-menu-item>
             <el-menu-item index="/three" @click="goToThree">
               <i class="el-icon-document"></i>
-              <span slot="title">demo3</span>
+              <span slot="title">vue</span>
             </el-menu-item>
             <el-menu-item index="/four" @click="goToFour">
-              <i class="el-icon-setting"></i>
-              <span slot="title">demo4</span>
+              <i class="el-icon-document"></i>
+              <span slot="title">react</span>
             </el-menu-item>
 
             <el-submenu index="/five">
@@ -34,7 +34,10 @@
               </template>
               <el-menu-item-group>
                 <el-menu-item index="/fiveOne" @click="gotoFiveOne">echarts demo</el-menu-item>
-                <el-menu-item index="/fiveTwo" @click="gotoFiveTwo">demo-2</el-menu-item>
+                <el-menu-item index="/fiveTwo" @click="gotoFiveTwo">
+                  <i class="el-icon-question"></i>
+                  <span slot="title"> 96道题</span>
+               </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>

@@ -8,6 +8,7 @@ import Four from "../components/four.vue";
 // import Five from "../components/five.vue";
 import FiveOne from "../components/fiveOne.vue";
 import FiveTwo from "../components/fiveTwo.vue";
+import store from "../store/index.js";
 
 Vue.use(VueRouter);
 
@@ -18,11 +19,17 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/login",
+    name: "login",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../components/login.vue")
+  },
+  {
+    path: "/about",
+    name: "About",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
@@ -80,5 +87,25 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((to,from,next) => {
+  
+  //是否登录
+  if(store.state.isLogin){
+    // 去登录页
+    if(to.path === 'login'){
+      next('/');
+    }else{
+      next();
+    }
+  }else{
+      // 没有登录
+      if(to.path === '/login'){
+        next();
+      }else{
+        next('login?redirect=' + to.fullPath);
+      }
+  }
+})
 
 export default router;
