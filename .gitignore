@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-# /dist // 因为要挂载在github.io上，要上传到仓库上
+
 
 # local env files
 .env.local
