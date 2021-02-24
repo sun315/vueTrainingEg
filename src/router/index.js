@@ -83,29 +83,30 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",  // 使用history打包后会访问不到文件，默认hash
   base: process.env.BASE_URL,
   routes
 });
 
-router.beforeEach((to,from,next) => {
+// 路由守卫
+// router.beforeEach((to,from,next) => {
   
   //是否登录
-  if(store.state.isLogin){
-    // 去登录页
-    if(to.path === 'login'){
-      next('/');
-    }else{
-      next();
-    }
-  }else{
-      // 没有登录
-      if(to.path === '/login'){
-        next();
-      }else{
-        next('login?redirect=' + to.fullPath);
-      }
-  }
-})
+//   if(store.state.isLogin){
+//     // 去登录页
+//     if(to.path === 'login'){
+//       next('/');
+//     }else{
+//       next();
+//     }
+//   }else{
+//       // 没有登录
+//       if(to.path === '/login'){
+//         next();
+//       }else{
+//         next('login?redirect=' + to.fullPath);
+//       }
+//   }
+// })
 
 export default router;
