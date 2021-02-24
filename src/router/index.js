@@ -89,24 +89,24 @@ const router = new VueRouter({
 });
 
 // 路由守卫
-// router.beforeEach((to,from,next) => {
+router.beforeEach((to,from,next) => {
   
   //是否登录
-//   if(store.state.isLogin){
-//     // 去登录页
-//     if(to.path === 'login'){
-//       next('/');
-//     }else{
-//       next();
-//     }
-//   }else{
-//       // 没有登录
-//       if(to.path === '/login'){
-//         next();
-//       }else{
-//         next('login?redirect=' + to.fullPath);
-//       }
-//   }
-// })
+  if(store.state.isLogin){
+    // 去登录页
+    if(to.path === 'login'){
+      next('/');
+    }else{
+      next();
+    }
+  }else{
+      // 没有登录
+      if(to.path === '/login'){
+        next();
+      }else{
+        next('login?redirect=' + to.fullPath);
+      }
+  }
+})
 
 export default router;
